@@ -1,9 +1,10 @@
 <script setup lang="ts">
-import Ffmpeg from "./components/Ffmpeg.vue"
+import Banben from './components/Banben.vue';
+import JianYing from './components/JianYing.vue';
 </script>
 
 <template>
-  <Ffmpeg></Ffmpeg>
+  <JianYing></JianYing>
 </template>
 
 <style>

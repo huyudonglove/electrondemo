@@ -1,4 +1,4 @@
-import { app, BrowserWindow, shell, ipcMain } from 'electron'
+import { app, BrowserWindow, shell, ipcMain, dialog } from 'electron'
 import { createRequire } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import path from 'node:path'
@@ -51,8 +51,11 @@ function createWindow() {
     title: '视频压缩工具',
     autoHideMenuBar: true,
     icon: path.join(process.env.VITE_PUBLIC, 'favicon.ico'),
+    width: 2000,
+    height: 1000,
     webPreferences: {
       preload,
+      webSecurity: false 
       // Warning: Enable nodeIntegration and disable contextIsolation is not secure in production
       // nodeIntegration: true,
 
@@ -65,7 +68,7 @@ function createWindow() {
   if (VITE_DEV_SERVER_URL) { // #298
     win.loadURL(VITE_DEV_SERVER_URL)
     // Open devTool if the app is not packaged
-    //win.webContents.openDevTools()
+    win.webContents.openDevTools()
   } else {
     win.loadFile(indexHtml)
   }
@@ -85,7 +88,6 @@ function createWindow() {
 
 app.whenReady().then(()=>{
   createWindow()
-  
 })
 
 app.on('window-all-closed', () => {
@@ -126,14 +128,32 @@ ipcMain.handle('open-win', (_, arg) => {
     childWindow.loadFile(indexHtml, { hash: arg })
   }
 })
-ipcMain.on('sendMsg', (_, arg) => {
-  console.log("zaizhe")
-})
 ipcMain.on('Zhuanma', (_, arg) => {
   console.log("Zhuanma")
   All.Zhuanma(arg)
 })
-
+ipcMain.on('dropVideo', (_, arg) => {
+  console.log(arg)
+  All.dropVideo(arg)
+})
+ipcMain.on('cutVideo', (_, arg) => {
+  console.log(arg)
+  All.cutVideo(arg)
+})
+ipcMain.on('ChangeImgEle', (_, arg) => {
+  All.ChangeImgEle(arg)
+})
+ipcMain.handle('ChangeImg2',(_, arg) => {
+   All.ChangeImg2(arg)
+})
+ipcMain.handle(`SelectFolder`,async (event, arg) => {
+  const result = await dialog.showOpenDialog({
+    properties: ['openDirectory'],
+  });
+  if (result.canceled) return null;
+  const imgs =await All.GetImagesFromFolder(result.filePaths[0])
+  return imgs ;
+})
 export function getMainWindow() {
   return win;
 }

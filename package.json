@@ -6,9 +6,7 @@
   "author": "you know who",
   "license": "MIT",
   "private": true,
-  "keywords": [
-    
-  ],
+  "keywords": [],
   "debug": {
     "env": {
       "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
@@ -33,6 +31,7 @@
   },
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "element-plus": "^2.10.2",
     "fluent-ffmpeg": "^2.1.3",
     "three": "^0.178.0"
   }

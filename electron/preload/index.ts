@@ -30,7 +30,27 @@ contextBridge.exposeInMainWorld('API', {
   Zhuanma:(data)=>{
     
     ipcRenderer.send('Zhuanma', data)
-  }
+  },
+  dropVideo:(data)=>{
+    console.log('dropVideo',data)
+    ipcRenderer.send('dropVideo', data)
+  },
+  cutVideo:(data)=>{
+    console.log('cutVideo',data)
+    ipcRenderer.send('cutVideo',data)
+  },
+  ChangeImg:(o,n)=>{
+    console.log('ChangeImgEle',o,n)
+    ipcRenderer.send('ChangeImgEle',[o,n])
+  },
+  SelectFolder:(data)=>{
+    console.log('SelectFolder',data)
+    return ipcRenderer.invoke('SelectFolder',data)
+  },
+  ChangeImg2:(o,n)=>{
+    console.log('ChangeImg2',o,n)
+     return ipcRenderer.invoke('ChangeImg2',[o,n])
+  },
 })
 
 // --------- Preload scripts loading ---------
