@@ -4,7 +4,7 @@ import JianYing from './components/JianYing.vue';
 </script>
 
 <template>
-  <JianYing></JianYing>
+  <Banben></Banben>
 </template>
 
 <style>
