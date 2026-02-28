@@ -48,7 +48,7 @@ const indexHtml = path.join(RENDERER_DIST, 'index.html')
 function createWindow() {
 
   win = new BrowserWindow({
-    title: '视频压缩工具',
+    title: 'shader vfx tool',
     autoHideMenuBar: true,
     icon: path.join(process.env.VITE_PUBLIC, 'favicon.ico'),
     width: 2000,

@@ -45,7 +45,7 @@ async function handleSelectFolder() {
   const result = await window.API.SelectFolder();
   if (result) {
     folderPath.value = result;
-    //console.log('真实文件夹路径:', result);
+    console.log('真实文件夹路径:', folderPath.value);
     imgListSrc.value = result;
   } else {
     console.log('用户取消了选择');
@@ -65,16 +65,22 @@ const deleteImg = (img) => {
 };
 </script>
 <template>
-    <el-button @click="handleSelectFolder">选择文件夹</el-button>
+    <el-button @click="handleSelectFolder" class="select-folder-button">选择文件夹</el-button>
     <div class="panel">
-        <div v-for="img in imgListSrc" :key="img" class="img-item">
+        <div v-for="(img,index) in imgListSrc" :key="img" class="img-item" >
           <img  :src="cacheBustedSrc(img)"  alt="" class="imgSelf" @drop.prevent="dragImg2" @dragover.prevent>
+          <p style="font-size: 0.7rem;">{{folderPath[index] }}</p>
           <el-button @click="deleteImg(img)">shanchu</el-button>
         </div>
         
     </div>
 </template>
 <style scoped>
+.select-folder-button {
+  position: absolute;
+  top: 0;
+  left: 10px;
+}
 .myIframe{
     position: absolute;
     left: 0;
@@ -83,16 +89,17 @@ const deleteImg = (img) => {
     height: 100%;
 }
 .panel{
-    width: 100rem;
+   
     position: absolute;
     right: 0;
-    top: 0;
+    top: 2rem;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
 .img-item{
     width: 20rem;
+    box-sizing: border-box;
 }
 .imgSelf{
     width: 20rem;

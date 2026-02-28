@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import Banben from './components/Banben.vue';
 import JianYing from './components/JianYing.vue';
+import Texiao from './components/Texiao.vue';
 </script>
 
 <template>
+  
   <Banben></Banben>
 </template>
 

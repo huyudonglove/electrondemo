@@ -1,8 +1,8 @@
 {
-  "name": "yasuo",
+  "name": "vfx",
   "version": "28.1.0",
   "main": "dist-electron/main/index.js",
-  "description": "视频压缩",
+  "description": "vfx tool for video editing",
   "author": "you know who",
   "license": "MIT",
   "private": true,
@@ -33,6 +33,7 @@
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "element-plus": "^2.10.2",
     "fluent-ffmpeg": "^2.1.3",
+    "stats.js": "^0.17.0",
     "three": "^0.178.0"
   }
 }
