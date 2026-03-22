@@ -2,11 +2,13 @@
 import Banben from './components/Banben.vue';
 import JianYing from './components/JianYing.vue';
 import Texiao from './components/Texiao.vue';
+import Editor from './components/Editor.vue';
 </script>
 
 <template>
   
   <Banben></Banben>
+  
 </template>
 
 <style>

@@ -163,12 +163,21 @@ async function GetImagesFromFolder(folderPath){
   const images = walk(folderPath);
   return images;
 }
- async function ChangeImg2(data){
-  console.log(data,666)
-  const oldImg = data[0];
-  const newImg = data[1];
- await fs.copyFileSync(newImg,oldImg);
- console.log('ChangeImg2Done')
+async function ChangeImg2(data){
+  console.log('ChangeImg2 接收数据:', data)
+  const oldImg = data[0];  // 目标路径（要被替换的文件）
+  const newImg = data[1];  // 源路径（新图片）
+  
+  console.log('复制文件:', newImg, '->', oldImg)
+  
+  try {
+    await fs.promises.copyFile(newImg, oldImg);
+    console.log('ChangeImg2 完成')
+    return { success: true }
+  } catch (err) {
+    console.error('ChangeImg2 失败:', err)
+    throw err
+  }
 }
 export {
     Zhuanma,
